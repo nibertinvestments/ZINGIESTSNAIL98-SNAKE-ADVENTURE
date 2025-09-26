@@ -1,53 +1,75 @@
 /*
-JavaScript Snake
-By Patrick Gillespie
-http://patorjk.com/games/snake
+Zingiestsnail98 Snake Adventure
+Customized by the legendary Zingiestsnail98
+Featuring Black & Red with Canary Yellow pinstriping and Mother of Pearl accents
 */
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #fc5454;
+  background: linear-gradient(135deg, #000000 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #000000 100%);
+  background-size: 400% 400%;
+  animation: zingiestGradient 15s ease infinite;
+}
+
+@keyframes zingiestGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 #game-area {
   margin: 10px;
-  padding: 0px;
+  padding: 3px;
+  border: 3px solid #FFD700; /* Canary Yellow pinstriping */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(255, 192, 203, 0.1); /* Mother of Pearl glow */
 }
 
 #mode-wrapper {
-  color: #ffffff;
-  font-family: Verdana, arial, helvetica, sans-serif;
+  color: #FFD700; /* Canary Yellow text */
+  font-family: 'Courier New', monospace; /* Zingiestsnail98 prefers monospace */
   font-size: 14px;
+  text-shadow: 0 0 8px rgba(255, 192, 203, 0.6); /* Mother of Pearl glow */
 }
 
 #game-area:focus {
-  outline: none;
+  outline: 2px solid #FFD700; /* Canary Yellow focus */
+  outline-offset: 2px;
 }
 
 a.snake-link,
 a.snake-link:link,
 a.snake-link:visited {
-  color: #fcfc54;
+  color: #FF6B6B; /* Red links with Zingiestsnail98 flair */
+  text-decoration: underline;
+  text-decoration-color: #FFD700; /* Canary Yellow underlines */
 }
 
 a.snake-link:hover {
-  color: #ffff54;
+  color: #FFD700; /* Canary Yellow on hover */
+  text-shadow: 0 0 5px rgba(255, 192, 203, 0.8); /* Mother of Pearl glow */
 }
 
 .snake-pause-screen {
-  font-family: Verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px; /* Slightly smaller to fit more text */
   position: absolute;
-  width: 300px;
-  height: 80px;
+  width: 400px; /* Wider to accommodate Zingiestsnail98 text */
+  height: 140px; /* Taller for better spacing */
   text-align: center;
   top: 50%;
   left: 50%;
-  margin-top: -40px;
-  margin-left: -150px;
+  margin-top: -70px; /* Adjusted for new height */
+  margin-left: -200px; /* Adjusted for new width */
   display: none;
-  background-color: black;
-  color: white;
+  background: linear-gradient(45deg, #000000, #330000);
+  color: #FFD700; /* Canary Yellow text */
+  border: 3px solid #FFD700; /* Canary Yellow border */
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 192, 203, 0.2);
+  /* Zingiestsnail98 signature pause screen */
+  line-height: 1.4; /* Better line spacing for readability */
+  word-wrap: break-word; /* Handle long words like Zingiestsnail98 */
 }
 
 .snake-panel-component {
@@ -60,13 +82,16 @@ a.snake-link:hover {
   margin: 0px;
 }
 
+/* The snake body - Zingiestsnail98's masterpiece! */
 .snake-snakebody-block {
   margin: 0px;
   padding: 0px;
-  background-color: #ff0000;
+  background: linear-gradient(45deg, #FF0000, #CC0000); /* Red gradient */
   position: absolute;
-  border: 0px solid #000080;
+  border: 1px solid #FFD700; /* Canary Yellow pinstriping */
   background-repeat: no-repeat;
+  box-shadow: 0 0 3px rgba(255, 192, 203, 0.3); /* Mother of Pearl glow */
+  /* Each segment blessed by Zingiestsnail98 */
 }
 
 .snake-snakebody-alive {
@@ -77,19 +102,26 @@ a.snake-link:hover {
   background-image: url("./images/deadblock.png"), url("./images/deadblock.png");
 }
 
+/* Zingiestsnail98's delicious snake treats! */
 .snake-food-block {
   margin: 0px;
   padding: 0px;
-  background-color: #ff0000;
-  border: 0px solid #000080;
+  background: radial-gradient(circle, #FFD700, #FFA500); /* Golden food worthy of Zingiestsnail98 */
+  border: 2px solid #FF6B6B; /* Red border */
   position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6), inset 0 0 4px rgba(255, 192, 203, 0.3);
+  /* The legendary snail's favorite snacks */
 }
 
+/* The playing field - Zingiestsnail98's domain */
 .snake-playing-field {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  background-color: #0000a8;
+  background: linear-gradient(45deg, #000000 0%, #111111 25%, #000000 50%, #111111 75%, #000000 100%);
+  background-size: 20px 20px; /* Subtle pattern */
+  /* This is where Zingiestsnail98 rules supreme */
   border: 0px solid #0000a8;
 }
 
@@ -102,39 +134,174 @@ a.snake-link:hover {
   position: relative;
 }
 
-.snake-welcome-dialog {
+/* Zingiestsnail98's custom toolbar styling */
+.snake-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
   padding: 8px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(51,0,0,0.8));
+  border-radius: 0 0 10px 0;
+  border: 2px solid #FFD700;
+  border-top: none;
+  border-left: none;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  font-family: 'Courier New', monospace;
+  color: #FFD700;
+  min-width: 350px; /* Ensure space for Zingiestsnail98 */
+}
+
+.snake-toolbar select {
+  background: #000000;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  border-radius: 5px;
+  padding: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px; /* Smaller font to fit longer text */
+  max-width: 200px; /* Control dropdown width */
+}
+
+.snake-toolbar button {
+  background: linear-gradient(45deg, #FF0000, #CC0000);
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 3px rgba(255, 192, 203, 0.5);
+  transition: all 0.3s ease;
+}
+
+.snake-toolbar button:hover {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: #000000;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.snake-toolbar span {
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(255, 192, 203, 0.5);
+  margin-right: 5px;
+}
+
+/* Responsive text sizing for long names like Zingiestsnail98 */
+@media screen and (max-width: 800px) {
+  .snake-toolbar {
+    font-size: 11px;
+    min-width: 300px;
+  }
+  
+  .snake-toolbar select {
+    font-size: 10px;
+    max-width: 180px;
+  }
+  
+  .snake-welcome-dialog {
+    width: 350px;
+    font-size: 12px;
+    margin-left: -175px;
+  }
+  
+  .snake-try-again-dialog,
+  .snake-win-dialog {
+    width: 320px;
+    font-size: 12px;
+    margin-left: -160px;
+  }
+  
+  .snake-pause-screen {
+    width: 350px;
+    font-size: 13px;
+    margin-left: -175px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .snake-toolbar {
+    font-size: 10px;
+    min-width: 280px;
+    padding: 6px;
+  }
+  
+  .snake-toolbar select {
+    font-size: 9px;
+    max-width: 150px;
+  }
+  
+  .snake-welcome-dialog {
+    width: 300px;
+    font-size: 11px;
+    margin-left: -150px;
+  }
+  
+  .snake-try-again-dialog,
+  .snake-win-dialog {
+    width: 280px;
+    font-size: 11px;
+    margin-left: -140px;
+  }
+  
+  .snake-pause-screen {
+    width: 300px;
+    font-size: 12px;
+    margin-left: -150px;
+  }
+}
+
+/* Extra styling for the legendary theme option */
+.snake-toolbar select option:first-child {
+  background: linear-gradient(90deg, #000000, #330000);
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.snake-welcome-dialog {
+  padding: 15px;
   margin: 0px;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: Verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  background: linear-gradient(45deg, #000000, #330000, #000000);
+  color: #FFD700; /* Canary Yellow */
+  font-family: 'Courier New', monospace; /* Zingiestsnail98 style */
+  font-size: 14px; /* Smaller to fit longer text */
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  /*height: 150px;*/
-  margin-top: -100px;
-  margin-left: -158px;
+  width: 450px; /* Wider for Zingiestsnail98 branding */
+  margin-top: -130px; /* Adjusted for new size */
+  margin-left: -225px; /* Adjusted for new width */
   text-align: center;
   display: block;
+  border: 3px solid #FFD700; /* Canary Yellow border */
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4), inset 0 0 15px rgba(255, 192, 203, 0.1);
+  line-height: 1.4; /* Better spacing for Zingiestsnail98 text */
+  word-wrap: break-word; /* Handle long words */
+  /* Welcome to Zingiestsnail98's domain! */
 }
 
 .snake-try-again-dialog,
 .snake-win-dialog {
-  padding: 8px;
+  padding: 12px;
   margin: 0px;
-  background-color: #000000;
-  color: #ffffff;
-  font-family: Verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  background: linear-gradient(45deg, #000000, #330000);
+  color: #FFD700; /* Zingiestsnail98 Canary Yellow */
+  font-family: 'Courier New', monospace; /* Match Zingiestsnail98 theme */
+  font-size: 13px; /* Slightly smaller for longer text */
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  height: 100px;
-  margin-top: -75px;
-  margin-left: -158px;
+  width: 380px; /* Wider for Zingiestsnail98 messages */
+  height: 120px; /* Taller for better text layout */
+  margin-top: -85px; /* Adjusted for new height */
+  margin-left: -190px; /* Adjusted for new width */
   text-align: center;
   display: none;
+  border: 3px solid #FFD700; /* Canary Yellow border */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 192, 203, 0.1);
+  line-height: 1.4; /* Better spacing for readability */
+  word-wrap: break-word; /* Handle long Zingiestsnail98 text */
 }

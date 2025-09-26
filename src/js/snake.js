@@ -1,7 +1,7 @@
 /*
-JavaScript Snake
-First version by Patrick Gillespie - I've since merged in a good number of github pull requests
-http://patorjk.com/games/snake
+Zingiestsnail98 Snake Adventure
+Enhanced by the legendary Zingiestsnail98 - Master of Serpentine Excellence!
+Original concept inspired by classic snake games, but now with that Zingiestsnail98 magic!
 */
 
 /**
@@ -13,6 +13,19 @@ http://patorjk.com/games/snake
 if (!window.SNAKE) {
   window.SNAKE = {};
 }
+
+// 🐍 Zingiestsnail98 Easter Egg Console Messages 🐍
+console.log("🐍 Welcome to Zingiestsnail98 Snake Adventure! 🐍");
+console.log("✨ Powered by the legendary Zingiestsnail98 ✨");
+console.log("🎨 Featuring Black & Red with Canary Yellow pinstriping!");
+console.log("🌟 Look for hidden Zingiestsnail98 easter eggs! 🌟");
+console.log("Ssssss... The snail slithers through code...");
+
+// Hidden Zingiestsnail98 achievements array - for future use!
+window.ZINGIESTSNAIL98_ACHIEVEMENTS = [
+  "First Slither", "Speed Demon", "Snake Master", "Legendary Length", 
+  "Zingiestsnail98 Approved", "Serpentine Excellence", "Code Crawler"
+];
 
 /*
     Direction explained (0 = up, etc etc)
@@ -35,7 +48,7 @@ const BOARD_NOT_READY = 0;
 const BOARD_READY = 1;
 const BOARD_IN_PLAY = 2;
 
-const HIGH_SCORE_KEY = "jsSnakeHighScore";
+const HIGH_SCORE_KEY = "zingiestSnail98HighScore"; // Zingiestsnail98's legendary scores!
 
 /**
  * @method addEventListener
@@ -248,9 +261,10 @@ SNAKE.Snake =
         const highScore = localStorage[HIGH_SCORE_KEY];
         if (me.snakeLength > highScore) {
           alert(
-            "Congratulations! You have beaten your previous high score, which was " +
-              highScore +
-              ".",
+            "🐍 ZINGIESTSNAIL98 ACHIEVEMENT UNLOCKED! 🐍\n" +
+            "You've slithered past your previous record of " + highScore + "!\n" +
+            "The legendary Zingiestsnail98 is proud of your serpentine skills!\n" +
+            "Current length: " + me.snakeLength + " - A true snake master! 🏆"
           );
           localStorage.setItem(HIGH_SCORE_KEY, me.snakeLength);
         }
@@ -443,6 +457,17 @@ SNAKE.Snake =
         me.snakeTail = me.snakeBody[index];
         me.snakeTail.next = me.snakeHead;
         me.snakeHead.prev = me.snakeTail;
+
+        // 🐍 Zingiestsnail98 Easter Egg Achievement System! 🐍
+        if (me.snakeLength === 10) {
+          console.log("🐍 Zingiestsnail98 says: 'Getting longer, nice slithering!' 🐍");
+        } else if (me.snakeLength === 25) {
+          console.log("✨ Zingiestsnail98 Achievement: 'Serpentine Excellence!' ✨");
+        } else if (me.snakeLength === 50) {
+          console.log("🏆 Zingiestsnail98 is IMPRESSED! You're a true Snake Master! 🏆");
+        } else if (me.snakeLength === 98) {
+          console.log("🎉 LEGENDARY! You reached the sacred Zingiestsnail98 number! 🎉");
+        }
 
         if (!playingBoard.foodEaten()) {
           return false;
@@ -828,7 +853,7 @@ SNAKE.Board =
         elmAboutPanel = document.createElement("div");
         elmAboutPanel.className = "snake-panel-component";
         elmAboutPanel.innerHTML =
-          "<a href='http://patorjk.com/blog/software/' class='snake-link'>more patorjk.com apps</a> - <a href='https://github.com/patorjk/JavaScript-Snake' class='snake-link'>source code</a> - <a href='https://www.youtube.com/channel/UCpcCLm9y6CsjHUrCvJHYHUA' class='snake-link'>pat's youtube</a>";
+          "<a href='https://youtube.com/zingiestsnail98' class='snake-link'>🐍 Zingiestsnail98's YouTube 🐍</a>";
 
         elmLengthPanel = document.createElement("div");
         elmLengthPanel.className = "snake-panel-component";
@@ -1359,6 +1384,237 @@ SNAKE.Board =
         me.setBoardState(BOARD_IN_PLAY); // start the game!
         mySnake.go();
       };
+
+      // ---------------------------------------------------------------------
+      // Public API Methods - Missing methods from API documentation
+      // ---------------------------------------------------------------------
+      
+      /**
+       * Starts a new game
+       * @method startGame
+       */
+      me.startGame = function() {
+        me.resetBoard();
+        mySnake.rebirth();
+        me.setBoardState(BOARD_IN_PLAY);
+        mySnake.go();
+      };
+
+      /**
+       * Pauses the current game
+       * @method pauseGame
+       */
+      me.pauseGame = function() {
+        if (me.getBoardState() === BOARD_IN_PLAY) {
+          me.setPaused(true);
+        }
+      };
+
+      /**
+       * Resumes a paused game
+       * @method resumeGame
+       */
+      me.resumeGame = function() {
+        if (me.getBoardState() === BOARD_IN_PLAY) {
+          me.setPaused(false);
+        }
+      };
+
+      /**
+       * Ends the current game
+       * @method endGame
+       */
+      me.endGame = function() {
+        me.setBoardState(BOARD_READY);
+        mySnake.handleDeath();
+      };
+
+      /**
+       * Returns the current score
+       * @method getScore
+       * @return {Number} Current score (snake length - 1)
+       */
+      me.getScore = function() {
+        return mySnake ? mySnake.snakeLength - 1 : 0;
+      };
+
+      /**
+       * Returns the high score from local storage
+       * @method getHighScore
+       * @return {Number} High score
+       */
+      me.getHighScore = function() {
+        const storageKey = `snake-high-score-${config.width}x${config.height}`;
+        return parseInt(localStorage.getItem(storageKey) || '0', 10);
+      };
+
+      /**
+       * Sets the high score in local storage
+       * @method setHighScore
+       * @param {Number} score The new high score
+       */
+      me.setHighScore = function(score) {
+        const storageKey = `snake-high-score-${config.width}x${config.height}`;
+        localStorage.setItem(storageKey, score);
+      };
+
+      /**
+       * Gets the current game state
+       * @method getGameState
+       * @return {String} Current game state ('ready', 'playing', 'paused', 'game-over')
+       */
+      me.getGameState = function() {
+        if (me.getBoardState() === BOARD_NOT_READY) return 'not-ready';
+        if (me.getBoardState() === BOARD_READY) return 'ready';
+        if (me.getBoardState() === BOARD_IN_PLAY) {
+          return me.getPaused() ? 'paused' : 'playing';
+        }
+        return 'unknown';
+      };
+
+      // Add missing callback support for events mentioned in API documentation
+      if (typeof config.onGameStart === 'function') {
+        const originalStartGame = me.startGame;
+        me.startGame = function() {
+          originalStartGame.call(me);
+          config.onGameStart();
+        };
+      }
+
+      if (typeof config.onGameEnd === 'function') {
+        const originalEndGame = me.endGame;
+        me.endGame = function() {
+          const finalScore = me.getScore();
+          originalEndGame.call(me);
+          config.onGameEnd(finalScore);
+        };
+      }
+
+      if (typeof config.onFoodEaten === 'function') {
+        // This will be integrated with the existing food eating logic
+        const originalEatFood = mySnake ? mySnake.eatFood : null;
+        if (mySnake && originalEatFood) {
+          mySnake.eatFood = function() {
+            const result = originalEatFood.call(mySnake);
+            if (result !== false) {
+              config.onFoodEaten(me.getScore());
+            }
+            return result;
+          };
+        }
+      }
+
+      if (typeof config.onScoreUpdate === 'function') {
+        // This will be called when snake length changes
+        const originalOnLengthUpdate = config.onLengthUpdate;
+        config.onLengthUpdate = function(length) {
+          if (originalOnLengthUpdate) originalOnLengthUpdate(length);
+          config.onScoreUpdate(length - 1);
+        };
+      }
+
+      if (typeof config.onHighScoreBeaten === 'function') {
+        // This will be checked after each score update
+        let previousHighScore = me.getHighScore();
+        const originalScoreUpdate = config.onScoreUpdate || function() {};
+        config.onScoreUpdate = function(score) {
+          originalScoreUpdate(score);
+          if (score > previousHighScore) {
+            me.setHighScore(score);
+            config.onHighScoreBeaten(score);
+            previousHighScore = score;
+          }
+        };
+      }
+
+      // Add support for theme configuration from API
+      if (config.theme && typeof config.theme === 'string') {
+        // Apply theme class to container when it's created
+        const originalSetBoardContainer = me.setBoardContainer;
+        if (originalSetBoardContainer) {
+          me.setBoardContainer = function(id) {
+            const result = originalSetBoardContainer.call(me, id);
+            if (elmContainer && config.theme !== 'main-snake') {
+              elmContainer.className = elmContainer.className.replace(/\s*main-snake\s*/, ' ') + ' ' + config.theme;
+            }
+            // Enable touch controls automatically when container is set (unless disabled)
+            if (config.enableTouchControls !== false && me.enableTouchControls) {
+              me.enableTouchControls();
+            }
+            return result;
+          };
+        }
+      }
+
+      // Add mobile touch support mentioned in API documentation
+      me.enableTouchControls = function() {
+        if (!elmContainer) return;
+        
+        let startX = 0, startY = 0;
+        const sensitivity = config.touchSensitivity || 50;
+
+        elmContainer.addEventListener('touchstart', function(e) {
+          const touch = e.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+          e.preventDefault();
+        }, { passive: false });
+
+        elmContainer.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+        }, { passive: false });
+
+        elmContainer.addEventListener('touchend', function(e) {
+          if (!startX || !startY) return;
+          
+          const touch = e.changedTouches[0];
+          const endX = touch.clientX;
+          const endY = touch.clientY;
+          
+          const diffX = startX - endX;
+          const diffY = startY - endY;
+          
+          if (Math.abs(diffX) > sensitivity || Math.abs(diffY) > sensitivity) {
+            let direction;
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+              // Horizontal swipe
+              direction = diffX > 0 ? MOVE_LEFT : MOVE_RIGHT;
+            } else {
+              // Vertical swipe
+              direction = diffY > 0 ? MOVE_UP : MOVE_DOWN;
+            }
+            
+            if (mySnake) {
+              mySnake.setDirection(direction);
+            }
+            
+            if (config.onTouchMove) {
+              const directionNames = ['up', 'right', 'down', 'left'];
+              config.onTouchMove(directionNames[direction]);
+            }
+          }
+          
+          startX = 0;
+          startY = 0;
+          e.preventDefault();
+        }, { passive: false });
+      };
+
+      // Add error handling wrapper for AI function
+      if (config.moveSnakeWithAI && typeof config.moveSnakeWithAI === 'function') {
+        const originalAI = config.moveSnakeWithAI;
+        config.moveSnakeWithAI = function(params) {
+          try {
+            originalAI(params);
+          } catch (error) {
+            console.error('AI Error:', error);
+            // Fallback to simple movement to prevent game crash
+            if (params.setDirection) {
+              params.setDirection(MOVE_UP); // Safe fallback direction
+            }
+          }
+        };
+      }
 
       // ---------------------------------------------------------------------
       // Initialize

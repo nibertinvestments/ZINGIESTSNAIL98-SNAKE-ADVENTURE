@@ -3,14 +3,14 @@
   <head>
     <!--
 
-  JavaScript Snake
-  https://patorjk.com/games/snake
+  Zingiestsnail98 Snake Adventure
+  Powered by the legendary Zingiestsnail98
 
-  Source code is available here: https://github.com/patorjk/JavaScript-Snake
+  Custom snake game with that Zingiestsnail98 twist!
 
   -->
     <meta charset="utf-8" />
-    <title>JavaScript Snake</title>
+    <title>Zingiestsnail98 Snake Adventure</title>
     <link
       rel="stylesheet"
       id="style"
@@ -18,15 +18,7 @@
       href="css/main-snake.css"
     />
     <link rel="shortcut icon" href="css/images/favicon.png" />
-    <style>
-      .snake-toolbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10000;
-        padding: 5px;
-      }
-    </style>
+    <!-- Zingiestsnail98 Enhanced Styling -->
     <script>
       function getTheme() {
         function changeTheme(themeUrl) {
@@ -44,34 +36,37 @@
         const index = document.getElementById("select").selectedIndex;
         switch (index) {
           case 0:
-            changeTheme("./css/light-snake.css?" + Math.random());
+            changeTheme("./css/main-snake.css?" + Math.random()); // Zingiestsnail98 theme!
             break;
           case 1:
-            changeTheme("./css/main-snake.css?" + Math.random());
+            changeTheme("./css/light-snake.css?" + Math.random());
             break;
           case 2:
-            changeTheme("css/dark-snake.css?" + Math.random());
+            changeTheme("./css/main-snake.css?" + Math.random());
             break;
           case 3:
-            changeTheme("css/green-snake.css?" + Math.random());
+            changeTheme("css/dark-snake.css?" + Math.random());
             break;
           case 4:
-            changeTheme("css/matrix-snake.css?" + Math.random());
+            changeTheme("css/green-snake.css?" + Math.random());
             break;
           case 5:
-            changeTheme("css/Senura-snake.css?" + Math.random());
+            changeTheme("css/matrix-snake.css?" + Math.random());
             break;
           case 6:
-            changeTheme("css/head-snake.css?" + Math.random());
+            changeTheme("css/Senura-snake.css?" + Math.random());
             break;
           case 7:
-            changeTheme("css/black-snake.css?" + Math.random());
+            changeTheme("css/head-snake.css?" + Math.random());
             break;
           case 8:
+            changeTheme("css/black-snake.css?" + Math.random());
+            break;
+          case 9:
             changeTheme("css/neon-snake.css?" + Math.random());
             break;
           default:
-            changeTheme("css/main-snake.css?" + Math.random());
+            changeTheme("css/main-snake.css?" + Math.random()); // Default to Zingiestsnail98!
             break;
         }
         setTimeout(function () {
@@ -94,15 +89,16 @@
       <div style="display: inline-block; margin-right: 10px">
         <span>Theme:</span>
         <select autocomplete="off" id="select">
-          <option>Light Theme by yokesharun</option>
-          <option selected>Main Theme by patorjk</option>
-          <option>Dark Theme by KenyStev</option>
-          <option>Green Theme by CoffeeCatDE</option>
-          <option>Matrix Theme by Geahad Haymor</option>
-          <option>Theme by Senura Ratnayake</option>
-          <option>Snake Head Theme by Rb64</option>
-          <option>Black and purple Theme by LucassSantoss</option>
-          <option>Neon Theme by Daisy21000</option>
+          <option selected>🐍 Zingiestsnail98 Theme</option>
+          <option>Light Theme</option>
+          <option>Classic Theme</option>
+          <option>Dark Theme</option>
+          <option>Green Theme</option>
+          <option>Matrix Theme</option>
+          <option>Senura Theme</option>
+          <option>Snake Head Theme</option>
+          <option>Purple Theme</option>
+          <option>Neon Theme</option>
         </select>
       </div>
       <div style="display: inline-block; margin-right: 10px">

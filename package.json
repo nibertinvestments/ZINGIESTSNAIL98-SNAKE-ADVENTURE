@@ -1,7 +1,7 @@
 {
-  "name": "javascript-snake",
-  "version": "1.0.0",
-  "description": "JavaScript Snake<br/> By Patrick Gillespie<br/> License: MIT<br/> http://patorjk.com/games/snake",
+  "name": "zingiestsnail98-snake-adventure",
+  "version": "2.0.0",
+  "description": "🐍 Zingiestsnail98 Snake Adventure 🐍<br/>Legendary snake game by Zingiestsnail98<br/>Featuring Black & Red theme with Canary Yellow pinstriping!<br/>License: MIT",
   "scripts": {
     "start": "parcel src/index.html --open",
     "build": "parcel build src/index.html",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patorjk/JavaScript-Snake.git"
+    "url": "git+https://github.com/zingiestsnail98/snake-adventure.git"
   },
-  "author": "",
+  "author": "Zingiestsnail98",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/patorjk/JavaScript-Snake/issues"
+    "url": "https://github.com/zingiestsnail98/snake-adventure/issues"
   },
-  "homepage": "https://github.com/patorjk/JavaScript-Snake#readme",
+  "homepage": "https://youtube.com/zingiestsnail98",
   "devDependencies": {
     "parcel": "^2.13.3",
     "parcel-reporter-static-files-copy": "^1.5.3"
