@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating Snake Game Favicon</title>
+</head>
+<body>
+    <canvas id="faviconCanvas" width="32" height="32"></canvas>
+    <script>
+        // Create a snake game favicon
+        const canvas = document.getElementById('faviconCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Clear canvas with black background
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Draw snake head (red)
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect(8, 8, 8, 8);
+        
+        // Draw snake body (red with black outline)
+        ctx.fillStyle = '#CC0000';
+        ctx.fillRect(16, 8, 8, 8);
+        ctx.fillRect(16, 16, 8, 8);
+        
+        // Draw food (canary yellow)
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(24, 24, 4, 4);
+        
+        // Add some border styling
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(0, 0, 32, 32);
+        
+        // Convert canvas to data URL and create downloadable image
+        const link = document.createElement('a');
+        link.download = 'snake-favicon.png';
+        link.href = canvas.toDataURL();
+        document.body.appendChild(link);
+        link.click();
+    </script>
+</body>
+</html>
